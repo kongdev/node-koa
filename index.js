@@ -1,3 +1,12 @@
-const a = () => 'aaa'
+const bodyParser = require('koa-bodyparser')
+const Koa = require('koa')
+const indexRoute = require('./router.js')
+const app = new Koa()
 
-console.log('1111')
+app.use(bodyParser())
+
+app.use(indexRoute.routes())
+
+app.listen(5555, () => {
+  console.log('Koa app listening')
+})
